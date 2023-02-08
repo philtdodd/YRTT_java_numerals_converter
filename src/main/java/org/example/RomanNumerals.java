@@ -64,6 +64,9 @@ public class RomanNumerals {
     /*
      * This is the version of RomanNumerals to int from my YRTT application process. I worked this solution out in my
      * head. Below I am going to try to implement it using TDD and see what the solution is.
+     *
+     * Note that the use of literal values rather than const/enum wass used as these will not change and use of such
+     * types would just mke the code bloated and harder to read.
      */
     public static int toInt(String numeral) {
         int retVal = 0;

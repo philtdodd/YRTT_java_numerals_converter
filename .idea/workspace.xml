@@ -54,7 +54,7 @@
       <recent name="$PROJECT_DIR$/src/test/java/resource" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RomanNumeralsTest.toNumeral_ShouldGenerateTheExpectedIntegerCSVFile">
+  <component name="RunManager" selected="JUnit.RomanNumeralsTest">
     <configuration name="RomanNumeralsTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="YRTT-Java-RomanNumerals-TDD" />
       <extension name="coverage">
