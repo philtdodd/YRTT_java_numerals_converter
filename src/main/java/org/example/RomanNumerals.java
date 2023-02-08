@@ -15,10 +15,13 @@ public class RomanNumerals {
             } else if (arabic >= 100) {
                 numerals += "C";
                 arabic -= 100;
+            } else if (arabic >= 90) {
+                numerals += "XC";
+                arabic -= 90;
             } else if (arabic >= 50) {
                 numerals += "L";
                 arabic -= 50;
-            } else if (arabic == 40) {
+            } else if (arabic >= 40) {
                 numerals += "XL";
                 arabic -= 40;
             } else if (arabic >= 10) {
