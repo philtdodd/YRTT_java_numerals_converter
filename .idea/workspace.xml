@@ -7,6 +7,7 @@
     <list default="true" id="4f5fae63-8f9b-433c-9f2b-f572fdbccbda" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RomanNumerals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RomanNumerals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/RomanNumeralsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/RomanNumeralsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,6 +87,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RomanNumeralsTest.toIntPassInNull" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="YRTT-Java-RomanNumerals-TDD" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.RomanNumeralsTest" />
+      <option name="METHOD_NAME" value="toIntPassInNull" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RomanNumeralsTest.toNumeral_ShouldGenerateTheExpectedIntegerCSVFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="YRTT-Java-RomanNumerals-TDD" />
       <extension name="coverage">
@@ -136,21 +153,5 @@
       <updated>1675789727208</updated>
     </task>
     <servers />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/RomanNumerals.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/example/RomanNumerals.java</url>
-          <line>53</line>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

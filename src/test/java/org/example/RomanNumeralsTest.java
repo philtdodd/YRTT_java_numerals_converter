@@ -4,77 +4,31 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RomanNumeralsTest {
     @Test
-    public void convert1ToNumeral() {
+    public void convert0ToNumeral() {
         RomanNumerals romanNumerals = new RomanNumerals();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            romanNumerals.toNumneral(0);
+        });
 
-        assertEquals("I", romanNumerals.toNumneral(1));
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.matches("Romans did not use 0."));
     }
 
     @Test
-    public void convert2ToNumeral() {
+    public void convertNegativeToNumeral() {
         RomanNumerals romanNumerals = new RomanNumerals();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            romanNumerals.toNumneral(-1);
+        });
 
-        assertEquals("II", romanNumerals.toNumneral(2));
-    }
+        String actualMessage = exception.getMessage();
 
-    @Test
-    public void convert3ToNumeral() {
-        RomanNumerals romanNumerals = new RomanNumerals();
-
-        assertEquals("III", romanNumerals.toNumneral(3));
-    }
-
-    @Test
-    public void convert4ToNumeral() {
-        RomanNumerals romanNumerals = new RomanNumerals();
-
-        assertEquals("IV", romanNumerals.toNumneral(4));
-    }
-
-    @Test
-    public void convert5ToNumeral() {
-        RomanNumerals romanNumerals = new RomanNumerals();
-
-        assertEquals("V", romanNumerals.toNumneral(5));
-    }
-
-    @Test
-    public void convert6ToNumeral() {
-        RomanNumerals romanNumerals = new RomanNumerals();
-
-        assertEquals("VI", romanNumerals.toNumneral(6));
-    }
-
-    @Test
-    public void convert7ToNumeral() {
-        RomanNumerals romanNumerals = new RomanNumerals();
-
-        assertEquals("VII", romanNumerals.toNumneral(7));
-    }
-
-    @Test
-    public void convert8ToNumeral() {
-        RomanNumerals romanNumerals = new RomanNumerals();
-
-        assertEquals("VIII", romanNumerals.toNumneral(8));
-    }
-
-    @Test
-    public void convert9ToNumeral() {
-        RomanNumerals romanNumerals = new RomanNumerals();
-
-        assertEquals("IX", romanNumerals.toNumneral(9));
-    }
-
-    @Test
-    public void convert10ToNumeral() {
-        RomanNumerals romanNumerals = new RomanNumerals();
-
-        assertEquals("X", romanNumerals.toNumneral(10));
+        assertTrue(actualMessage.matches("Romans did not use negative numbers."));
     }
 
     @ParameterizedTest
@@ -86,9 +40,46 @@ public class RomanNumeralsTest {
         String actualValue = romanNumerals.toNumneral(input);
         assertEquals(expected, actualValue);
     }
+
+    @Test
+    public void toIntPassInNull() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            romanNumerals.toInt(null);
+        });
+
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.matches("Must pass in a String of Roman numerals."));
+    }
+
+    @Test
+    public void toIntPassInEmptyString() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            romanNumerals.toInt("");
+        });
+
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.matches("Must pass in a set of Roman numerals."));
+    }
+
+    @Test
+    public void toIntPassInInvalid() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            romanNumerals.toInt("ABCD");
+        });
+
+        String actualMessage = exception.getMessage();
+
+        assertTrue(actualMessage.matches("String is not a valid list of Roman Numerals."));
+    }
+
     @ParameterizedTest
     @CsvFileSource(resources = "/data/numerals.csv", numLinesToSkip = 1)
-    void toNumeral_ShouldGenerateTheExpectedIntegerCSVFile(
+    void toInt_ShouldGenerateTheExpectedIntegerCSVFile(
             int expected, String input) {
         RomanNumerals romanNumerals = new RomanNumerals();
 

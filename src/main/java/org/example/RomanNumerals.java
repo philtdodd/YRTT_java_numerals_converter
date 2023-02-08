@@ -1,167 +1,116 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /*
  * Notes on TDD process
  *
  * This was interesting I had the basic way to handle the tests in my mind so started off with 1 and built up from
  * there. I though the whole 3process was going to be more complicated than this, so it was interesting to see how the
  * problem solution was a lot simpler than I expected it to be. I would probably not have found this is I was just
- * designing the code normally using pen and paper to design the pseudocode.
+ * designing the code normally using pen and paper to design the pseudocode. The If's used initially were refactored
+ * an array of records to simplify the code. This would make it easy to extend the roman system further easily.
  *
  * Also, during this process I remembered that at UNI we had to develop a C pretty printer and for this I initially
  * developed a test bed and then the code. So have a past example of TDD. My peers used my testbed to test their code.
  */
 public class RomanNumerals {
+    private record NumeralConverter(String numeral, int arabic) {
+    }
+
+    private final NumeralConverter[] numeralConverterArray = {
+            new NumeralConverter("M", 1000),
+            new NumeralConverter("CM", 900),
+            new NumeralConverter("D", 500),
+            new NumeralConverter("CD", 400),
+            new NumeralConverter("C", 100),
+            new NumeralConverter("XC", 90),
+            new NumeralConverter("L", 50),
+            new NumeralConverter("XL", 40),
+            new NumeralConverter("X", 10),
+            new NumeralConverter("IX", 9),
+            new NumeralConverter("V", 5),
+            new NumeralConverter("IV", 4),
+            new NumeralConverter("I", 1)
+    };
 
     public String toNumneral(int arabic) {
         String numerals = "";
 
+        if (arabic == 0)
+            throw new IllegalArgumentException("Romans did not use 0.");
+
+        if (arabic < 0)
+            throw new IllegalArgumentException("Romans did not use negative numbers.");
+
         while (arabic != 0) {
-            if (arabic >= 1000) {
-                numerals += "M";
-                arabic -= 1000;
-            } else if (arabic >= 900) {
-                numerals += "CM";
-                arabic -= 900;
-            } else if (arabic >= 500) {
-                numerals += "D";
-                arabic -= 500;
-            } else if (arabic >= 400) {
-                numerals += "CD";
-                arabic -= 400;
-            } else if (arabic >= 100) {
-                numerals += "C";
-                arabic -= 100;
-            } else if (arabic >= 90) {
-                numerals += "XC";
-                arabic -= 90;
-            } else if (arabic >= 50) {
-                numerals += "L";
-                arabic -= 50;
-            } else if (arabic >= 40) {
-                numerals += "XL";
-                arabic -= 40;
-            } else if (arabic >= 10) {
-                numerals += "X";
-                arabic -= 10;
-            } else if (arabic == 9) {
-                numerals += "IX";
-                arabic -= 9;
-            } else if (arabic >= 5) {
-                numerals += "V";
-                arabic -= 5;
-            } else if (arabic == 4) {
-                numerals += "IV";
-                arabic -= 4;
-            } else if (arabic >= 1) {
-                numerals += "I";
-                arabic -= 1;
+            for (NumeralConverter numeralConverter : numeralConverterArray) {
+                if (arabic >= numeralConverter.arabic) {
+                    numerals += numeralConverter.numeral;
+                    arabic -= numeralConverter.arabic;
+                    break;
+                }
             }
         }
         return numerals;
     }
 
+    private record ArabicConverter(String numeral, int arabic) {
+    }
+
+    private final ArabicConverter[] arabicConverterArray = {
+            new ArabicConverter("M", 1000),
+            new ArabicConverter("D", 500),
+            new ArabicConverter("C", 100),
+            new ArabicConverter("L", 50),
+            new ArabicConverter("X", 10),
+            new ArabicConverter("V", 5),
+            new ArabicConverter("I", 1)
+    };
+
     /*
-     * This is the version of RomanNumerals to int from my YRTT application process. I worked this solution out in my
-     * head. Below I am going to try to implement it using TDD and see what the solution is.
-     *
-     * Note that the use of literal values rather than const/enum wass used as these will not change and use of such
-     * types would just mke the code bloated and harder to read.
+     * I initially started the task by trying to create a solution iteratively. This hit issues when I got the the
+     * IV side of the conversion so I wrote a recursive solution handling the addition and subtraction sides of the
+     * numerals passed in. Also I refactored this to use a record rather than the if statements in my earlier cycles.
      */
-    public static int toInt(String numeral) {
+    public int toInt(String numerals) {
         int retVal = 0;
         String matched = "";
 
-        // Find Highest Value numeral in string
-        if (numeral.contains("M")) {
-            matched = "M";
-            retVal = 1000;
-        } else if (numeral.contains("D")) {
-            matched = "D";
-            retVal = 500;
-        } else if (numeral.contains("C")) {
-            matched = "C";
-            retVal = 100;
-        } else if (numeral.contains("L")) {
-            matched = "L";
-            retVal = 50;
-        } else if (numeral.contains("X")) {
-            matched = "X";
-            retVal = 10;
-        } else if (numeral.contains("V")) {
-            matched = "V";
-            retVal = 5;
-        } else if (numeral.contains("I")) {
-            matched = "I";
-            retVal = 1;
+        // Validate the Roman numerals are valid
+        if (numerals == null)
+            throw new IllegalArgumentException("Must pass in a String of Roman numerals.");
+
+        if (numerals.matches(""))
+            throw new IllegalArgumentException("Must pass in a set of Roman numerals.");
+
+        String numeralsRegex = "^M{0,3}(CM|CD|D?C{0,3})(XC|XL|L?X{0,3})(IX|IV|V?I{0,3})$";
+        Pattern numeralsPattern = Pattern.compile(numeralsRegex);
+        Matcher matcher = numeralsPattern.matcher(numerals);
+        if (!matcher.matches())
+            throw new IllegalArgumentException("String is not a valid list of Roman Numerals.");
+
+        // Find Highest Value numerals in string
+        for (ArabicConverter arabicConverter : arabicConverterArray) {
+            if (numerals.contains(arabicConverter.numeral)) {
+                matched = arabicConverter.numeral;
+                retVal = arabicConverter.arabic;
+                break;
+            }
         }
 
-        String[] remainder = numeral.split(matched, 2);
+        String[] remainder = numerals.split(matched, 2);
 
-        // Handle anything the the left of the match numeral - the subtract side
+        // Handle anything the the left of the match numerals - the subtraction side
         if (remainder[0] != "")
             retVal -= toInt(remainder[0]);
 
-        // Handle anything the the right of the match numeral - the add side
+        // Handle anything the the right of the match numerals - the addition side
         if (remainder[1] != "")
             retVal += toInt(remainder[1]);
 
         return (retVal);
     }
-
-    /**************************************************************************************************************
-     * This commented out code was the point where it was obvious that recursion was the best way forward.
-     * Left in for visibility, it would be removed in the real code.
-     **************************************************************************************************************
-
-    // Would have put in the values, but as they don't change this would have bloated the code, and made the code
-    // difficult to read. Therefore, I stuck to using the literal values in the code.
-    enum Numeral {
-        NOTSET,
-        I,
-        V,
-        X,
-        L,
-        C,
-        D,
-        M
-    }
-
-    private static int toIntFailed(String numeral) {
-        int positive = 0;
-        int negative = 0;
-        int current = 0;
-        Numeral lastNumeral = Numeral.NOTSET;
-        while (numeral.length() != 0) {
-            if (numeral.substring(0, 1).matches("X")) {
-                numeral = numeral.substring(1);
-                if (retVal != 0)
-                    retVal = 10 - retVal;
-                else
-                    retVal = 10;
-                lastNumeral = Numeral.X;
-            } else if (numeral.substring(0, 1).matches("V")) {
-                numeral = numeral.substring(1);
-                if (lastNumeral == Numeral.I)
-                    current = 4;
-                else if (lastNumeral.ordinal() > Numeral.V.ordinal()) { // not I
-                    negative += 5;
-                    current = 0;
-                } else {
-                    positive += 5;
-                }
-                lastNumeral = Numeral.V;
-            } else if (numeral.substring(0, 1).matches("I")) {
-                numeral = numeral.substring(1);
-                current += 1;
-                if (lastNumeral) { // not I
-                    positive += current;
-                    current = 0;
-                }
-                lastNumeral = Numeral.I;
-            }
-        }
-        return positive + current - negative;
-    }
-    ***************************************************************************************************************/
 }
