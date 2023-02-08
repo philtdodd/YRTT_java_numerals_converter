@@ -109,9 +109,12 @@ public class RomanNumerals {
     public static int toInt(String numeral) {
         int retVal = 0;
 
-        if (numeral.matches("I"))
-            retVal += 1;
-
+        while (numeral.length() != 0) {
+            if (numeral.substring(0,1).matches("I")) {
+                numeral = numeral.substring(1);
+                retVal += 1;
+            }
+        }
         return retVal;
     }
 }
