@@ -18,6 +18,9 @@ public class RomanNumerals {
             } else if (arabic >= 50) {
                 numerals += "L";
                 arabic -= 50;
+            } else if (arabic == 40) {
+                numerals += "XL";
+                arabic -= 40;
             } else if (arabic >= 10) {
                 numerals += "X";
                 arabic -= 10;
@@ -28,7 +31,7 @@ public class RomanNumerals {
                 numerals += "V";
                 arabic -= 5;
             } else if (arabic == 4) {
-                numerals = "IV" + numerals;
+                numerals += "IV";
                 arabic -= 4;
             } else if (arabic >= 1) {
                 numerals += "I";
