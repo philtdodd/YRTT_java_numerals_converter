@@ -110,7 +110,10 @@ public class RomanNumerals {
         int retVal = 0;
 
         while (numeral.length() != 0) {
-            if (numeral.substring(0,1).matches("I")) {
+            if (numeral.substring(0,1).matches("V")) {
+                numeral = numeral.substring(1);
+                retVal = 5 - retVal;
+            } else if (numeral.substring(0,1).matches("I")) {
                 numeral = numeral.substring(1);
                 retVal += 1;
             }
