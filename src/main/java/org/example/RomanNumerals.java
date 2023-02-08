@@ -1,5 +1,16 @@
 package org.example;
 
+/*
+ * Notes on TDD process
+ *
+ * This was interesting I had the basic way to handle the tests in my mind so started off with 1 and built up from
+ * there. I though the whole 3process was going to be more complicated than this, so it was interesting to see how the
+ * problem solution was a lot simpler than I expected it to be. I would probably not have found this is I was just
+ * designing the code normally using pen and paper to design the pseudocode.
+ *
+ * Also, during this process I remembered that at UNI we had to develop a C pretty printer and for this I initially
+ * developed a test bed and then the code. So have a past example of TDD. My peers used my testbed to test their code.
+ */
 public class RomanNumerals {
 
     public String toNumneral(int arabic) {
