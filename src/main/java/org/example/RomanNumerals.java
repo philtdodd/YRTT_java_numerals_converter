@@ -9,6 +9,9 @@ public class RomanNumerals {
             if (arabic > 1000) {
                 numerals += "M";
                 arabic -= 1000;
+            } else if (arabic >= 900) {
+                numerals += "CM";
+                arabic -= 900;
             } else if (arabic >= 500) {
                 numerals += "D";
                 arabic -= 500;
