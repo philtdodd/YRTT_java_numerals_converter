@@ -6,7 +6,7 @@ public class RomanNumerals {
         String numerals = "";
 
         while (arabic != 0) {
-            if (arabic > 1000) {
+            if (arabic >= 1000) {
                 numerals += "M";
                 arabic -= 1000;
             } else if (arabic >= 900) {
