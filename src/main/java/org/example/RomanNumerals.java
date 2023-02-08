@@ -24,6 +24,9 @@ public class RomanNumerals {
             } else if (arabic >= 5) {
                 numerals += "V";
                 arabic -= 5;
+            } else if (arabic == 4) {
+                numerals = "IV" + numerals;
+                arabic -= 4;
             } else if (arabic >= 1) {
                 numerals += "I";
                 arabic -= 1;

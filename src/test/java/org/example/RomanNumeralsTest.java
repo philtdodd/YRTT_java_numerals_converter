@@ -17,4 +17,60 @@ public class RomanNumeralsTest {
 
         assertEquals("II", romanNumerals.toNumneral(2));
     }
+
+    @Test
+    public void convert3ToNumeral() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        assertEquals("III", romanNumerals.toNumneral(3));
+    }
+
+    @Test
+    public void convert4ToNumeral() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        assertEquals("IV", romanNumerals.toNumneral(4));
+    }
+
+    @Test
+    public void convert5ToNumeral() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        assertEquals("V", romanNumerals.toNumneral(5));
+    }
+
+    @Test
+    public void convert6ToNumeral() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        assertEquals("VI", romanNumerals.toNumneral(6));
+    }
+
+    @Test
+    public void convert7ToNumeral() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        assertEquals("VII", romanNumerals.toNumneral(7));
+    }
+
+    @Test
+    public void convert8ToNumeral() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        assertEquals("VIII", romanNumerals.toNumneral(8));
+    }
+
+    @Test
+    public void convert9ToNumeral() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        assertEquals("IX", romanNumerals.toNumneral(9));
+    }
+
+    @Test
+    public void convert10ToNumeral() {
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        assertEquals("X", romanNumerals.toNumneral(10));
+    }
 }
