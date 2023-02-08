@@ -1,6 +1,9 @@
 package org.example;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvFileSource;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RomanNumeralsTest {
@@ -72,5 +75,15 @@ public class RomanNumeralsTest {
         RomanNumerals romanNumerals = new RomanNumerals();
 
         assertEquals("X", romanNumerals.toNumneral(10));
+    }
+
+    @ParameterizedTest
+    @CsvFileSource(resources = "/data/numerals.csv", numLinesToSkip = 1)
+    void toNumeral_ShouldGenerateTheExpectedRomanNumeralCSVFile(
+            int input, String expected) {
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        String actualValue = romanNumerals.toNumneral(input);
+        assertEquals(expected, actualValue);
     }
 }
