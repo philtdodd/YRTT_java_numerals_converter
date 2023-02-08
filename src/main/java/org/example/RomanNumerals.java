@@ -65,7 +65,7 @@ public class RomanNumerals {
      * This is the version of RomanNumerals to int from my YRTT application process. I worked this solution out in my
      * head. Below I am going to try to implement it using TDD and see what the solution is.
      */
-    public static int toIntRecursive(String numeral) {
+    public static int toInt(String numeral) {
         int retVal = 0;
         String matched = "";
 
@@ -97,30 +97,68 @@ public class RomanNumerals {
 
         // Handle anything the the left of the match numeral - the subtract side
         if (remainder[0] != "")
-            retVal -= toIntRecursive(remainder[0]);
+            retVal -= toInt(remainder[0]);
 
         // Handle anything the the right of the match numeral - the add side
         if (remainder[1] != "")
-            retVal += toIntRecursive(remainder[1]);
+            retVal += toInt(remainder[1]);
 
         return (retVal);
     }
 
-    public static int toInt(String numeral) {
-        int retVal = 0;
+    /**************************************************************************************************************
+     * This commented out code was the point where it was obvious that recursion was the best way forward.
+     * Left in for visibility, it would be removed in the real code.
+     **************************************************************************************************************
 
+    // Would have put in the values, but as they don't change this would have bloated the code, and made the code
+    // difficult to read. Therefore, I stuck to using the literal values in the code.
+    enum Numeral {
+        NOTSET,
+        I,
+        V,
+        X,
+        L,
+        C,
+        D,
+        M
+    }
+
+    private static int toIntFailed(String numeral) {
+        int positive = 0;
+        int negative = 0;
+        int current = 0;
+        Numeral lastNumeral = Numeral.NOTSET;
         while (numeral.length() != 0) {
             if (numeral.substring(0, 1).matches("X")) {
                 numeral = numeral.substring(1);
-                retVal = 10 - retVal;
+                if (retVal != 0)
+                    retVal = 10 - retVal;
+                else
+                    retVal = 10;
+                lastNumeral = Numeral.X;
             } else if (numeral.substring(0, 1).matches("V")) {
                 numeral = numeral.substring(1);
-                retVal = 5 - retVal;
+                if (lastNumeral == Numeral.I)
+                    current = 4;
+                else if (lastNumeral.ordinal() > Numeral.V.ordinal()) { // not I
+                    negative += 5;
+                    current = 0;
+                } else {
+                    positive += 5;
+                }
+                lastNumeral = Numeral.V;
             } else if (numeral.substring(0, 1).matches("I")) {
                 numeral = numeral.substring(1);
-                retVal += 1;
+                current += 1;
+                if (lastNumeral) { // not I
+                    positive += current;
+                    current = 0;
+                }
+                lastNumeral = Numeral.I;
             }
         }
-        return retVal;
+        return positive + current - negative;
     }
+    ***************************************************************************************************************/
 }
