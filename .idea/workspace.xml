@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f5fae63-8f9b-433c-9f2b-f572fdbccbda" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/RomanNumerals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/RomanNumerals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/RomanNumeralsTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/RomanNumeralsTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,8 +55,8 @@
       <recent name="$PROJECT_DIR$/src/test/java/resource" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.RomanNumeralsTest.toNumeral_ShouldGenerateTheExpectedRomanNumeralCSVFile">
-    <configuration name="RomanNumeralsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.RomanNumeralsTest.toNumeral_ShouldGenerateTheExpectedIntegerCSVFile">
+    <configuration name="RomanNumeralsTest" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
       <module name="YRTT-Java-RomanNumerals-TDD" />
       <extension name="coverage">
         <pattern>
@@ -85,6 +87,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RomanNumeralsTest.toNumeral_ShouldGenerateTheExpectedIntegerCSVFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="YRTT-Java-RomanNumerals-TDD" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="org.example" />
+      <option name="MAIN_CLASS_NAME" value="org.example.RomanNumeralsTest" />
+      <option name="METHOD_NAME" value="toNumeral_ShouldGenerateTheExpectedIntegerCSVFile(int,java.lang.String)" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="RomanNumeralsTest.toNumeral_ShouldGenerateTheExpectedRomanNumeralCSVFile" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="YRTT-Java-RomanNumerals-TDD" />
       <extension name="coverage">
@@ -103,8 +121,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RomanNumeralsTest.toNumeral_ShouldGenerateTheExpectedIntegerCSVFile" />
         <item itemvalue="JUnit.RomanNumeralsTest.toNumeral_ShouldGenerateTheExpectedRomanNumeralCSVFile" />
-        <item itemvalue="JUnit.RomanNumeralsTest" />
         <item itemvalue="JUnit.RomanNumeralsTest.convert2ToNumeral" />
       </list>
     </recent_temporary>

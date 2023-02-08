@@ -86,4 +86,16 @@ public class RomanNumeralsTest {
         String actualValue = romanNumerals.toNumneral(input);
         assertEquals(expected, actualValue);
     }
+    @ParameterizedTest
+    @CsvFileSource(resources = "/data/numerals.csv", numLinesToSkip = 1)
+    void toNumeral_ShouldGenerateTheExpectedIntegerCSVFile(
+            int expected, String input) {
+        RomanNumerals romanNumerals = new RomanNumerals();
+
+        int actualValue = romanNumerals.toInt(input);
+        assertEquals(expected, actualValue);
+    }
+
+
 }
+

@@ -60,4 +60,55 @@ public class RomanNumerals {
         }
         return numerals;
     }
+
+    /*
+     * This is the version of RomanNumerals to int from my YRTT application process. I worked this solution out in my
+     * head. Below I am going to try to implement it using TDD and see what the solution is.
+     */
+    public static int toIntRecursive(String numeral) {
+        int retVal = 0;
+        String matched = "";
+
+        // Find Highest Value numeral in string
+        if (numeral.contains("M")) {
+            matched = "M";
+            retVal = 1000;
+        } else if (numeral.contains("D")) {
+            matched = "D";
+            retVal = 500;
+        } else if (numeral.contains("C")) {
+            matched = "C";
+            retVal = 100;
+        } else if (numeral.contains("L")) {
+            matched = "L";
+            retVal = 50;
+        } else if (numeral.contains("X")) {
+            matched = "X";
+            retVal = 10;
+        } else if (numeral.contains("V")) {
+            matched = "V";
+            retVal = 5;
+        } else if (numeral.contains("I")) {
+            matched = "I";
+            retVal = 1;
+        }
+
+        String[] remainder = numeral.split(matched, 2);
+
+        // Handle anything the the left of the match numeral - the subtract side
+        if (remainder[0] != "")
+            retVal -= toIntRecursive(remainder[0]);
+
+        // Handle anything the the right of the match numeral - the add side
+        if (remainder[1] != "")
+            retVal += toIntRecursive(remainder[1]);
+
+        return (retVal);
+    }
+
+    public static int toInt(String numeral) {
+        int retVal = 0;
+
+        return retVal;
+    }
 }
