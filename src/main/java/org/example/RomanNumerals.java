@@ -29,6 +29,6 @@ public class RomanNumerals {
                 arabic -= 1;
             }
         }
-        return "I";
+        return numerals;
     }
 }

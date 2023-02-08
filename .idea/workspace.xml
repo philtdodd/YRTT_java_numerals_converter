@@ -47,7 +47,7 @@
     "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
-  <component name="RunManager" selected="JUnit.RomanNumeralsTest.convert2ToNumeral">
+  <component name="RunManager" selected="JUnit.RomanNumeralsTest">
     <configuration name="RomanNumeralsTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="YRTT-Java-RomanNumerals-TDD" />
       <extension name="coverage">
@@ -81,8 +81,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.RomanNumeralsTest.convert2ToNumeral" />
         <item itemvalue="JUnit.RomanNumeralsTest" />
+        <item itemvalue="JUnit.RomanNumeralsTest.convert2ToNumeral" />
       </list>
     </recent_temporary>
   </component>
